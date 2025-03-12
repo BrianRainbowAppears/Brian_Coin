@@ -1,14 +1,16 @@
 // 从 ethers.js 库中导入 ethers 和 BigNumber，用于与区块链交互和大数计算
 import { ethers, BigNumber } from "ethers";
+console.log("Ethers object:", ethers);
 // 从 React 导入 useState 和 useEffect，用于管理组件的状态和副作用
 import { useState, useEffect } from "react";
-// 导入 LuLuCoin 智能合约的 ABI 文件，用于与合约进行交互
-import LuLuCoin from "../LuLuCoin.json";
+// 导入 BrianCoin 智能合约的 ABI 文件，用于与合约进行交互
+// import BrianCoin from "../BrianCoin.json";
+import BrianCoin from "../BrianCoin.json";
 
 // 导出默认组件 MintERC20，用于实现 ERC20 代币的铸造功能
 export default function MintERC20({ accounts }) {
   // 定义智能合约的部署地址
-  const ContractAddress = "0x663F3ad617193148711d28f5334eE4Ed07016602";
+  const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
   // 使用 useState 钩子定义 balance（用户余额）和 mintAmount（用户希望铸造的代币数量）的状态
   const [balance, setBalance] = useState(null); // 初始余额为空
@@ -25,7 +27,7 @@ export default function MintERC20({ accounts }) {
       // 初始化智能合约实例
       const contract = new ethers.Contract(
         ContractAddress,
-        LuLuCoin.abi,
+        BrianCoin.abi,
         signer
       );
 
@@ -59,7 +61,7 @@ export default function MintERC20({ accounts }) {
       // 初始化智能合约实例
       const contract = new ethers.Contract(
         ContractAddress,
-        LuLuCoin.abi,
+        BrianCoin.abi,
         signer
       );
 
@@ -95,13 +97,13 @@ export default function MintERC20({ accounts }) {
       {/* 使用 TailwindCSS 进行布局和样式设置 */}
       <div className="flex flex-col flex-grow justify-center items-center font-wq mb-12 mt-20 text-white">
         <div className="w-[640-px] text-center">
-          {/* 标题：铸造 LuLuCoin */}
-          <h1 className="text-6xl text-[#ff2c73]">铸造 LuLuCoin</h1>
+          {/* 标题：铸造 BrianCoin */}
+          <h1 className="text-6xl text-[#ff2c73]">铸造 BrianCoin</h1>
           {isConnected ? (
             // 如果已连接钱包
             <>
               <p className="text-4xl mt-20 mb-12 animate-pulse">
-                开始铸造你的第一个 LuLuCoin 代币吧!
+                开始铸造你的第一个 BrianCoin 代币吧!
               </p>
               {/* 输入框：输入用户想铸造的代币数量 */}
               <div className="flex justify-center mt-4">
@@ -125,7 +127,7 @@ export default function MintERC20({ accounts }) {
                 </button>
                 {/* 显示当前用户的代币余额 */}
                 <p className="t text-[#ff2c73] text-xl animate-pulse mt-4">
-                  当前的 LuLuCoin 代币余额：{" "}
+                  当前的 BrianCoin 代币余额：{" "}
                   {balance !== null ? `${balance} ETH` : "正在加载中..."}
                 </p>
               </div>
